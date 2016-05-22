@@ -1,3 +1,3 @@
 export function nextGeneration(){
-  return { type:'NEXT'}
+  return { type:'NEXT_GENERATION'}
 }

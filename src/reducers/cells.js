@@ -1,6 +1,6 @@
 function cells(state=[], action) {
   switch(action.type) {
-  case 'NEXT':
+  case 'NEXT_GENERATION':
     console.log(state)
     return updateCells(state)
   default:
