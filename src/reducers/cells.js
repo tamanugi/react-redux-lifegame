@@ -1,23 +1,22 @@
 function cells(state=[], action) {
   switch(action.type) {
   case 'NEXT_GENERATION':
-    console.log(state)
-    return updateCells(state)
+    return _updateCells(state)
   default:
     return state
   }
 }
 
-function updateCells(cells=[]){
+function _updateCells(cells=[]){
   var cells_tmp = cells
 
   for(var y = 0; y < cells.length; y++){
     for(var x = 0; x < cells[y].length; x++){
-      var cnt = countLiveCell(cells, x, y)
-      if(cnt < 2 || cnt > 4){
+      var cnt = _countLiveCell(cells, x, y)
+      if(cnt < 2 || cnt >= 4){
         cells_tmp[y][x] = 0
       }else{
-        cells_tmp[y][x] = 1        
+        cells_tmp[y][x] = 1
       }
     }
   }
@@ -25,7 +24,7 @@ function updateCells(cells=[]){
   return cells_tmp
 }
 
-function countLiveCell(cells, x, y){
+function _countLiveCell(cells, x, y){
 
   var cntLiveCell = 0
   for(var i = -1; i <= 1; i++){
@@ -35,8 +34,8 @@ function countLiveCell(cells, x, y){
         continue
       }
 
-      var _y = checkRange(y + i, 0, cells.length - 1)
-      var _x = checkRange(x + j, 0, cells[y].length - 1)
+      var _y = _checkRange(y + i, 0, cells.length - 1)
+      var _x = _checkRange(x + j, 0, cells[y].length - 1)
 
       if(cells[_y][_x] === 1){
         cntLiveCell++
@@ -49,7 +48,7 @@ function countLiveCell(cells, x, y){
 
 }
 
-function checkRange(num, min=0, max=0){
+function _checkRange(num, min=0, max=0){
 
   if(num < min){
     return min

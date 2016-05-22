@@ -1,16 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
-
-let Cell = (props) => {
-  const {dispatch, isLive} = props
-
-  return (
-    <td>{isLive}</td>
-  )
-
-}
-
-Cell = connect()(Cell)
+let Cell = ({isLive}) => (
+    <td>{isLive?'□':'■'}</td>
+)
 
 export default Cell
